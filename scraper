@@ -1,0 +1,19 @@
+import praw
+
+# Authenticate with Reddit API
+reddit = praw.Reddit(client_id='YOUR_CLIENT_ID',
+                     client_secret='YOUR_CLIENT_SECRET',
+                     user_agent='YOUR_USER_AGENT')
+
+# Specify the subreddit and username
+subreddit = reddit.subreddit('SUBREDDIT_NAME')
+username = 'USERNAME'
+
+# Retrieve posts
+posts = subreddit.new(limit=None)  # This retrieves all posts in the subreddit
+
+# Print or process each post
+for post in posts:
+    if post.author.name == username:
+        print(post.title)
+        # Process other post attributes as needed
